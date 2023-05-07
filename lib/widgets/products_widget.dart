@@ -33,9 +33,11 @@ class ProductsWidget extends StatelessWidget {
                         children: [
                           InkWell(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => ProductScreen(),
-                    ));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ProductScreen(),
+                                    ));
                               },
                               child: Image.asset(
                                 "assets/images/Product ${index + 1}.png",
@@ -43,7 +45,7 @@ class ProductsWidget extends StatelessWidget {
                                 width: 250,
                                 fit: BoxFit.cover,
                               )),
-                          Text("Product name",
+                          const Text("Product name",
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w500,
