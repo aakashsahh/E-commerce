@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "203069812163",
+    "project_id": "furniture-app-e0a9b",
+    "storage_bucket": "furniture-app-e0a9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203069812163:android:2dd840848c22607d3a2176",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203069812163-5g87bdrarj1lop5k19qnuv12pqg0demu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD67kK_bYTvG4Ew-SCLszr6INjg0-a0sUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203069812163-5g87bdrarj1lop5k19qnuv12pqg0demu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "203069812163-istq661ll8rvqqqb4a5uo7ieif13vp0n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.suraj.hamroFurniture"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203069812163:android:da0e50111abbff163a2176",
+        "android_client_info": {
+          "package_name": "com.suraj.hamro_furniture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203069812163-5g87bdrarj1lop5k19qnuv12pqg0demu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD67kK_bYTvG4Ew-SCLszr6INjg0-a0sUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203069812163-5g87bdrarj1lop5k19qnuv12pqg0demu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "203069812163-istq661ll8rvqqqb4a5uo7ieif13vp0n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.suraj.hamroFurniture"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
