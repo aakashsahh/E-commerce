@@ -11,7 +11,7 @@ class ProductsWidget extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: SizedBox(
             width: 250,
             child: Stack(
@@ -23,11 +23,11 @@ class ProductsWidget extends StatelessWidget {
                       shape: NeumorphicShape.flat,
                       boxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(12)),
-                      color: Color(0xFFF3F6FD),
+                      color: const Color(0xFFF3F6FD),
                       intensity: 1,
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -51,8 +51,8 @@ class ProductsWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black54,
                               )),
-                          SizedBox(height: 8),
-                          Text(
+                         const  SizedBox(height: 8),
+                          const Text(
                             "\$230",
                             style: TextStyle(
                                 fontSize: 18,
@@ -66,24 +66,24 @@ class ProductsWidget extends StatelessWidget {
                 ),
                 //for cart icon
                 Padding(
-                  padding: EdgeInsets.only(right: 25),
+                  padding: const EdgeInsets.only(right: 25),
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: InkWell(
                       onTap: () {},
                       child: Container(
-                        padding: EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                            color: Color(0xFF35324C),
+                            color: const Color(0xFF35324C),
                             borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.black12,
                                 blurRadius: 4,
                                 spreadRadius: 4,
                               )
                             ]),
-                        child: Icon(
+                        child: const Icon(
                           CupertinoIcons.cart_fill_badge_plus,
                           color: Colors.white,
                           size: 20,
