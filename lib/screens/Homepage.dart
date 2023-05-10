@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import '../widgets/products_widget.dart';
@@ -35,7 +36,7 @@ class Homepage extends StatelessWidget {
                       color: Colors.black54),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 20),
+                  padding: const EdgeInsets.only(left: 20),
                   child: InkWell(
                     onTap: () {},
                     child: Neumorphic(
@@ -50,6 +51,28 @@ class Homepage extends StatelessWidget {
                       child: const Padding(
                         padding: EdgeInsets.all(10),
                         child: Icon(Icons.search),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Neumorphic(
+                      style: NeumorphicStyle(
+                        shape: NeumorphicShape.flat,
+                        boxShape: NeumorphicBoxShape.roundRect(
+                          BorderRadius.circular(12),
+                        ),
+                        color: const Color(0xFFF3F6FD),
+                        intensity: 1,
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Icon(
+                          CupertinoIcons.cart_fill,
+                        ),
                       ),
                     ),
                   ),
