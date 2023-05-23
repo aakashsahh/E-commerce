@@ -26,7 +26,7 @@ class CategoryScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       size: 30,
                       color: Colors.black,
@@ -34,7 +34,7 @@ class CategoryScreen extends StatelessWidget {
                   ),
                   Text(
                     category,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
@@ -46,10 +46,10 @@ class CategoryScreen extends StatelessWidget {
                       boxShape: NeumorphicBoxShape.roundRect(
                         BorderRadius.circular(12),
                       ),
-                      color: Color(0xFFF3F6FD),
+                      color: const Color(0xFFF3F6FD),
                       intensity: 1,
                     ),
-                    child: Padding(
+                    child: const Padding(
                       padding: EdgeInsets.all(10),
                       child: Icon(CupertinoIcons.cart_fill),
                     ),
@@ -57,9 +57,9 @@ class CategoryScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
           GridView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             padding: EdgeInsets.only(top: 20, right: 5,left: 5,bottom: 50),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,

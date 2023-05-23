@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
+import '../widgets/custom_navbar.dart';
 import '../widgets/products_widget.dart';
 import 'category_screen.dart';
 
+// ignore: must_be_immutable
 class Homepage extends StatelessWidget {
   List categories = [
     "Chairs",
@@ -19,26 +21,7 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
-        child: Container(
-          decoration: const BoxDecoration(
-              color: Color(0xFFF3F6FD),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 4,
-                  spreadRadius: 2,
-                ),
-              ]),
-          height: 70,
-          child: Row(children: []),
-        ),
-      ),
+      bottomNavigationBar: const CustomNavbar(),
       body: DefaultTabController(
         length: 4,
         child: Material(
@@ -95,7 +78,7 @@ class Homepage extends StatelessWidget {
                                 child: const Padding(
                                   padding: EdgeInsets.all(10),
                                   child: Icon(
-                                    CupertinoIcons.cart_fill,
+                                    CupertinoIcons.person,
                                   ),
                                 ),
                               ),
@@ -161,20 +144,20 @@ class Homepage extends StatelessWidget {
                                   ));
                             },
                             child: Neumorphic(
-                              margin: EdgeInsets.all(10),
-                              padding: EdgeInsets.symmetric(
+                              margin: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 25),
                               style: NeumorphicStyle(
                                 shape: NeumorphicShape.flat,
                                 boxShape: NeumorphicBoxShape.roundRect(
                                     BorderRadius.circular(20)),
-                                color: Color(0xFFF3F6FD),
+                                color: const Color(0xFFF3F6FD),
                                 intensity: 1,
                               ),
                               child: Center(
                                   child: Text(
                                 categories[index],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black,
@@ -185,8 +168,8 @@ class Homepage extends StatelessWidget {
                         },
                       ),
                     ),
-                    SizedBox(height: 12),
-                    Text(
+                    const SizedBox(height: 12),
+                    const Text(
                       "Best Offers",
                       style: TextStyle(
                         fontSize: 20,
@@ -195,7 +178,7 @@ class Homepage extends StatelessWidget {
                       ),
                     ),
                     ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: 4,
                       itemBuilder: (context, index) {
@@ -203,7 +186,7 @@ class Homepage extends StatelessWidget {
                           minLeadingWidth: 70,
                           leading: Image.asset(
                               "assets/images/Product ${index + 1}.png"),
-                          title: Text(
+                          title: const Text(
                             "Product Name",
                             style: TextStyle(
                               fontSize: 18,
@@ -213,13 +196,13 @@ class Homepage extends StatelessWidget {
                           ),
                           subtitle: Text(
                             categories[index],
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w300,
                               color: Colors.black38,
                             ),
                           ),
-                          trailing: Text(
+                          trailing: const Text(
                             "\$230",
                             style: TextStyle(
                                 fontSize: 18,

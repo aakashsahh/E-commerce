@@ -9,7 +9,7 @@ class CatProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Neumorphic(
           style: NeumorphicStyle(
             shape: NeumorphicShape.flat,
@@ -35,15 +35,15 @@ class CatProductCard extends StatelessWidget {
                     width: 150,
                   ),
                 ),
-                Text(
+                const Text(
                   "Product Name",
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: Colors.black54),
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   "\$230",
                   style: TextStyle(
                       fontSize: 20,
