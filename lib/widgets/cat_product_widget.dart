@@ -1,3 +1,5 @@
+
+
 import 'package:hamro_furniture/screens/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -14,11 +16,11 @@ class CatProductCard extends StatelessWidget {
           style: NeumorphicStyle(
             shape: NeumorphicShape.flat,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-            color: Color(0xFFF3F6FD),
+            color: const Color(0xFFF3F6FD),
             intensity: 1,
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               children: [
                 InkWell(
