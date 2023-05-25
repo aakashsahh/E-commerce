@@ -21,202 +21,161 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomNavbar(),
-      body: DefaultTabController(
-        length: 4,
-        child: Material(
+        bottomNavigationBar: const CustomNavbar(),
+        // body: DefaultTabController(
+        //   length: 4,
+        body: Material(
           color: const Color(0xFFF3F6FD),
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(top: 50, left: 15),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Hamro Furniture",
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black54),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  const Text(
+                    "Hamro Furniture",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black54),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: InkWell(
+                      onTap: () {},
+                      child: Neumorphic(
+                        style: NeumorphicStyle(
+                          shape: NeumorphicShape.flat,
+                          boxShape: NeumorphicBoxShape.roundRect(
+                            BorderRadius.circular(12),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Neumorphic(
-                                style: NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  boxShape: NeumorphicBoxShape.roundRect(
-                                    BorderRadius.circular(12),
-                                  ),
-                                  color: const Color(0xFFF3F6FD),
-                                  intensity: 1,
-                                ),
-                                child: const Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Icon(Icons.search),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 20),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Neumorphic(
-                                style: NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  boxShape: NeumorphicBoxShape.roundRect(
-                                    BorderRadius.circular(12),
-                                  ),
-                                  color: const Color(0xFFF3F6FD),
-                                  intensity: 1,
-                                ),
-                                child: const Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Icon(
-                                    CupertinoIcons.person,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ]),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const TabBar(
-                        indicatorSize: TabBarIndicatorSize.label,
-                        indicatorColor: Colors.black,
-                        isScrollable: true,
-                        labelColor: Colors.black,
-                        labelStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFFF3F6FD),
+                          intensity: 1,
                         ),
-                        unselectedLabelColor: Colors.black38,
-                        tabs: [
-                          Tab(
-                            text: "chairs",
-                          ),
-                          Tab(
-                            text: "Sofas",
-                          ),
-                          Tab(
-                            text: "Beds",
-                          ),
-                          Tab(
-                            text: "Tables",
-                          ),
-                        ]),
-                    const SizedBox(
-                      height: 20,
+                        child: const Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(Icons.search),
+                        ),
+                      ),
                     ),
-                    SizedBox(
-                      height: 360,
-                      child: TabBarView(children: [
-                        ProductsWidget(),
-                        ProductsWidget(),
-                        ProductsWidget(),
-                        ProductsWidget(),
-                      ]),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: InkWell(
+                      onTap: () {},
+                      child: Neumorphic(
+                        style: NeumorphicStyle(
+                          shape: NeumorphicShape.flat,
+                          boxShape: NeumorphicBoxShape.roundRect(
+                            BorderRadius.circular(12),
+                          ),
+                          color: const Color(0xFFF3F6FD),
+                          intensity: 1,
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(
+                            CupertinoIcons.person,
+                          ),
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 10),
-                    //categories box
-                    SizedBox(
-                      height: 60,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => CategoryScreen(
-                                      category: categories[index],
-                                    ), //navigate to category screen
-                                  ));
-                            },
-                            child: Neumorphic(
-                              margin: const EdgeInsets.all(10),
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 25),
-                              style: NeumorphicStyle(
-                                shape: NeumorphicShape.flat,
-                                boxShape: NeumorphicBoxShape.roundRect(
-                                    BorderRadius.circular(20)),
-                                color: const Color(0xFFF3F6FD),
-                                intensity: 1,
-                              ),
-                              child: Center(
-                                  child: Text(
-                                categories[index],
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black,
-                                ),
-                              )),
-                            ),
-                          );
+                  ),
+                ]),
+
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 360,
+                  child: ProductsWidget(),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+
+                //categories box
+                SizedBox(
+                  height: 60,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CategoryScreen(
+                                  category: categories[index],
+                                ), //navigate to category screen
+                              ));
                         },
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      "Best Offers",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black54,
-                      ),
-                    ),
-                    ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          minLeadingWidth: 70,
-                          leading: Image.asset(
-                              "assets/images/Product ${index + 1}.png"),
-                          title: const Text(
-                            "Product Name",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black54,
-                            ),
+                        child: Neumorphic(
+                          margin: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                          style: NeumorphicStyle(
+                            shape: NeumorphicShape.flat,
+                            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
+                            color: const Color(0xFFF3F6FD),
+                            intensity: 1,
                           ),
-                          subtitle: Text(
+                          child: Center(
+                              child: Text(
                             categories[index],
                             style: const TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.black38,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
                             ),
-                          ),
-                          trailing: const Text(
-                            "\$230",
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black),
-                          ),
-                        );
-                      },
-                    ),
-                  ]),
+                          )),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(height: 12),
+                const Text(
+                  "Best Offers",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black54,
+                  ),
+                ),
+
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      minLeadingWidth: 70,
+                      leading: Image.asset("assets/images/Product ${index + 1}.png"),
+                      title: const Text(
+                        "Product Name",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black54,
+                        ),
+                      ),
+                      subtitle: Text(
+                        categories[index],
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black38,
+                        ),
+                      ),
+                      trailing: const Text(
+                        "\$230",
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.black),
+                      ),
+                    );
+                  },
+                ),
+              ]),
             ),
           ),
-        ),
-      ),
-    );
+        ));
+    // ),
   }
 }

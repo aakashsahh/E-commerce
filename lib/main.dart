@@ -1,8 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/Homepage.dart';
 
 void main() {
+  // Firebase.initializeApp()
   runApp(const MyApp());
 }
 

@@ -12,7 +12,7 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Color(0xFFF3F6FD),
+      color: const Color(0xFFF3F6FD),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +61,7 @@ class CategoryScreen extends StatelessWidget {
           GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            padding: EdgeInsets.only(top: 20, right: 5,left: 5,bottom: 50),
+            padding: const EdgeInsets.only(top: 20, right: 5,left: 5,bottom: 50),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
             childAspectRatio: (MediaQuery.of(context).size.width - 15 - 10) / (2 * 250),
             mainAxisSpacing: 30,
@@ -75,7 +75,7 @@ class CategoryScreen extends StatelessWidget {
             return OverflowBox(
               maxHeight: 250 +70,
               child: Container(
-                margin: EdgeInsets.only(top: 70),
+                margin: const EdgeInsets.only(top: 70),
                 child: CatProductCard(index),
               ),
             );
