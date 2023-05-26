@@ -22,8 +22,6 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: const CustomNavbar(),
-        // body: DefaultTabController(
-        //   length: 4,
         body: Material(
           color: const Color(0xFFF3F6FD),
           child: SingleChildScrollView(
@@ -78,10 +76,15 @@ class Homepage extends StatelessWidget {
                     ),
                   ),
                 ]),
-
-                const SizedBox(
-                  height: 10,
+                SizedBox(height: 20),
+                const Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(
+                    "Our Products",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300, color: Colors.black),
+                  ),
                 ),
+              //all products
                 SizedBox(
                   height: 360,
                   child: ProductsWidget(),
@@ -144,7 +147,7 @@ class Homepage extends StatelessWidget {
                 ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: 4,
+                  itemCount: 5,
                   itemBuilder: (context, index) {
                     return ListTile(
                       minLeadingWidth: 70,

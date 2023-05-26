@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:hamro_furniture/widgets/custom_navbar.dart';
 
 import '../widgets/cat_product_widget.dart';
 
@@ -18,7 +19,7 @@ class CategoryScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 50, left: 20, right: 20),
+              padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -58,29 +59,30 @@ class CategoryScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-          GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            padding: const EdgeInsets.only(top: 20, right: 5,left: 5,bottom: 50),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
-            childAspectRatio: (MediaQuery.of(context).size.width - 15 - 10) / (2 * 250),
-            mainAxisSpacing: 30,
-            crossAxisSpacing: 5,
-          ),
-          itemCount: 4,
-          itemBuilder: (context, index){
-            if(index % 2 == 0){
-              return CatProductCard(index);
-            }
-            return OverflowBox(
-              maxHeight: 250 +70,
-              child: Container(
-                margin: const EdgeInsets.only(top: 70),
-                child: CatProductCard(index),
+            GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(top: 20, right: 5, left: 5, bottom: 50),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: (MediaQuery.of(context).size.width - 15 - 10) / (2 * 250),
+                mainAxisSpacing: 30,
+                crossAxisSpacing: 5,
               ),
-            );
-          },
-          ),
+              itemCount: 6,
+              itemBuilder: (context, index) {
+                if (index % 2 == 0) {
+                  return CatProductCard(index);
+                }
+                return OverflowBox(
+                  maxHeight: 250 + 70,
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 70),
+                    child: CatProductCard(index),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
