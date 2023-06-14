@@ -1,12 +1,11 @@
-
-
 import 'package:hamro_furniture/screens/product_screen.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
+// ignore: must_be_immutable
 class CatProductCard extends StatelessWidget {
   int pIndex;
-  CatProductCard(this.pIndex);
+  CatProductCard(this.pIndex, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +24,11 @@ class CatProductCard extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProductScreen(),
-                        ));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => ProductScreen(),
+                    //     ));
                   },
                   child: Image.asset(
                     "assets/images/Product ${pIndex + 1}.png",
@@ -39,18 +38,12 @@ class CatProductCard extends StatelessWidget {
                 ),
                 const Text(
                   "Product Name",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black54),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black54),
                 ),
                 const SizedBox(height: 10),
                 const Text(
                   "\$230",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
                 )
               ],
             ),

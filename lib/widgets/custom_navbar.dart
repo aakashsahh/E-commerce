@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hamro_furniture/screens/home2.dart';
 
 import '../screens/Homepage.dart';
 
@@ -34,7 +35,7 @@ class CustomNavbar extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Homepage(),
+                        builder: (context) => const Homepage2(),
                       ));
                 },
                 child: Container(

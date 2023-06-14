@@ -1,10 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hamro_furniture/firebase_options.dart';
+import 'package:hamro_furniture/screens/home2.dart';
 
-import 'screens/Homepage.dart';
+// import 'screens/Homepage.dart';
 
-void main() {
-  // Firebase.initializeApp()
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -13,10 +18,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Hamro Furniture',
       debugShowCheckedModeBanner: false,
-      home: Homepage(),
+      //home: Homepage(),
+      home: Homepage2(),
     );
   }
 }

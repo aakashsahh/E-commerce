@@ -76,7 +76,7 @@ class Homepage extends StatelessWidget {
                     ),
                   ),
                 ]),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 const Padding(
                   padding: EdgeInsets.only(left: 10),
                   child: Text(
