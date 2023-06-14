@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hamro_furniture/screens/home2.dart';
 
-import '../screens/Homepage.dart';
-
 class CustomNavbar extends StatelessWidget {
   const CustomNavbar({super.key});
 
@@ -32,11 +30,11 @@ class CustomNavbar extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Homepage2(),
-                      ));
+                  Navigator.pushAndRemoveUntil<void>(
+                    context,
+                    MaterialPageRoute<void>(builder: (BuildContext context) => const Homepage2()),
+                    ModalRoute.withName('home'),
+                  );
                 },
                 child: Container(
                   padding: const EdgeInsets.all(15),

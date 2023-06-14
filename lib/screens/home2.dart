@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hamro_furniture/widgets/custom_navbar.dart';
 
-import 'category_screen.dart';
 import 'product_screen.dart';
 
 class Homepage2 extends StatefulWidget {
@@ -22,7 +21,7 @@ class _Homepage2State extends State<Homepage2> {
     "Windows",
   ];
   int _selectedIndex = -1;
-  final Stream<QuerySnapshot> products = FirebaseFirestore.instance.collection("Products").snapshots();
+  Stream<QuerySnapshot> products = FirebaseFirestore.instance.collection("Products").snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,21 +58,15 @@ class _Homepage2State extends State<Homepage2> {
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: 5,
+                  itemCount: categories.length,
                   itemBuilder: (context, index) {
+                    String category = categories[index];
                     return GestureDetector(
                       onTap: () {
                         setState(() {
                           _selectedIndex = index;
                         });
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => CategoryScreen(
-                        //       category: categories[index],
-                        //     ),
-                        //   ),
-                        // );
+                        filterProducsts(category);
                       },
                       child: Container(
                         margin: const EdgeInsets.all(10),
@@ -140,6 +133,12 @@ class _Homepage2State extends State<Homepage2> {
         ),
       ),
     );
+  }
+
+  void filterProducsts(String category) {
+    setState(() {
+      products = FirebaseFirestore.instance.collection("Products").where("category", isEqualTo: category).snapshots();
+    });
   }
 
   Widget oneProduct(BuildContext context, product) {
