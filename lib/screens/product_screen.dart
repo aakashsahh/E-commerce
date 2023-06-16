@@ -1,8 +1,16 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
+  final product;
+  const ProductScreen({required this.product, super.key});
+
+  @override
+  State<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +30,9 @@ class ProductScreen extends StatelessWidget {
                     },
                     child: const Icon(Icons.arrow_back, size: 30),
                   ),
-                  const Text(
-                    "Product",
-                    style: TextStyle(
+                  Text(
+                    widget.product!['name'],
+                    style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.w500,
                     ),
@@ -32,8 +40,7 @@ class ProductScreen extends StatelessWidget {
                   Neumorphic(
                     style: NeumorphicStyle(
                       shape: NeumorphicShape.concave,
-                      boxShape: NeumorphicBoxShape.roundRect(
-                          BorderRadius.circular(12)),
+                      boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
                       color: const Color(0xFFF2F5FC),
                       intensity: 1,
                     ),
@@ -51,8 +58,8 @@ class ProductScreen extends StatelessWidget {
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(5),
-                child: Image.asset(
-                  "assets/images/Product 1.png",
+                child: Image.network(
+                  widget.product!['imgurl'],
                   fit: BoxFit.cover,
                   height: 350,
                 ),
@@ -60,19 +67,19 @@ class ProductScreen extends StatelessWidget {
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
-                    "Product Name",
-                    style: TextStyle(
+                    widget.product!['name'],
+                    style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.only(right: 20),
                     child: Text(
-                      "\$230",
-                      style: TextStyle(
+                      "\$${widget.product['price']}",
+                      style: const TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.w400,
                       ),
@@ -80,20 +87,14 @@ class ProductScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const Text(
-                "Chairs",
-                style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.black45),
+              Text(
+                widget.product['category'],
+                style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w300, color: Colors.black45),
               ),
               const SizedBox(height: 20),
-              const Text(
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.black45),
+              Text(
+                widget.product['description'],
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color: Colors.black45),
                 textAlign: TextAlign.justify,
               ),
             ],

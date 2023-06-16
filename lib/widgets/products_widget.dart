@@ -42,11 +42,11 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                           children: [
                             InkWell(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => ProductScreen(),
-                                      ));
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //       builder: (context) => ProductScreen(),
+                                  //     ));
                                 },
                                 child: Image.asset(
                                   "assets/images/Product ${index + 1}.png",
