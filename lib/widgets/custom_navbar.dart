@@ -4,6 +4,8 @@ import 'package:hamro_furniture/screens/cart_screen.dart';
 import 'package:hamro_furniture/screens/home2.dart';
 import 'package:badges/badges.dart' as badges;
 
+import '../screens/product_screen.dart';
+
 class CustomNavbar extends StatelessWidget {
   const CustomNavbar({super.key});
 
@@ -52,38 +54,19 @@ class CustomNavbar extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CartPage()),
-                  );
-                },
+                onTap: () {},
                 child: Container(
-                    padding: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: const badges.Badge(
-                      badgeContent: Text(
-                        '2',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      badgeAnimation: badges.BadgeAnimation.rotation(
-                        animationDuration: Duration(seconds: 1),
-                        colorChangeAnimationDuration: Duration(seconds: 1),
-                        loopAnimation: false,
-                        curve: Curves.fastOutSlowIn,
-                        colorChangeAnimationCurve: Curves.easeInCubic,
-                      ),
-                      child: Icon(
-                        CupertinoIcons.cart_fill,
-                        color: Colors.black,
-                        size: 28,
-                      ),
-                    )),
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: const Icon(
+                    CupertinoIcons.cart_fill,
+                    color: Colors.black,
+                    size: 28,
+                  ),
+                ),
               ),
               InkWell(
                 onTap: () {},

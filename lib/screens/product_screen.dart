@@ -4,13 +4,21 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 class ProductScreen extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
   final product;
-  const ProductScreen({required this.product, super.key});
+  const ProductScreen({required this.product, Key? key}) : super(key: key);
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
 }
 
 class _ProductScreenState extends State<ProductScreen> {
+  List<dynamic> cartItems = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    print(cartItems.length);
+    print("hii");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,21 +124,36 @@ class _ProductScreenState extends State<ProductScreen> {
                 spreadRadius: 2,
               ),
             ]),
-        child: const Center(
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              cartItems.add(widget.product);
+            });
+          },
+          child: const Center(
             child: Padding(
-          padding: EdgeInsets.only(top: 20),
-          child: Text(
-            "+Add To Cart",
-            style: TextStyle(
-              color: Color(0xFF35324C),
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                "+Add To Cart",
+                style: TextStyle(
+                  color: Color(0xFF35324C),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
             ),
           ),
-        )),
+        ),
       ),
       floatingActionButton: InkWell(
-        onTap: () {},
+        onTap: () {
+          setState(() {
+            cartItems.add(widget.product);
+          });
+          print(cartItems.length);
+          print("hello");
+          print(cartItems.toString());
+        },
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
