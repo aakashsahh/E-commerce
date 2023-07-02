@@ -214,7 +214,6 @@ class _Homepage2State extends State<Homepage2> {
             alignment: Alignment.bottomRight,
             child: InkWell(
               onTap: () {
-                // Existing code...
 
                 // Null checks for each field
                 String id = product['id'] ?? '';
@@ -225,7 +224,7 @@ class _Homepage2State extends State<Homepage2> {
                 String imgurl = product['imgurl'] ?? '';
                 int quantity = 1;
 
-                // Map the snapshot data to the Products class
+                // Mapping the snapshot data to the Products class
                 Products productObject = Products(
                   id,
                   name,
@@ -239,8 +238,6 @@ class _Homepage2State extends State<Homepage2> {
                 setState(() {
                   cartItems.add(productObject);
                 });
-                print("hii");
-                print(cartItems.length);
               },
               child: Container(
                 padding: const EdgeInsets.all(12),
