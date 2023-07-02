@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:hamro_furniture/models/products_model.dart';
 import 'package:hamro_furniture/screens/cart_screen.dart';
 import 'package:hamro_furniture/widgets/custom_navbar.dart';
 
@@ -22,16 +23,17 @@ class _Homepage2State extends State<Homepage2> {
     "Doors",
     "Windows",
   ];
-   List<dynamic> cartItems = [];
+  List<Products> cartItems = [];
   int _selectedIndex = -1;
   void navigateToCart() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => CartScreen(cartItems: cartItems),
+        builder: (context) => CartScreen(cartItems: cartItems.cast<Products>()),
       ),
     );
   }
+
   Stream<QuerySnapshot> products = FirebaseFirestore.instance.collection("Products").snapshots();
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,7 @@ class _Homepage2State extends State<Homepage2> {
           )
         ],
       ),
-      bottomNavigationBar:  CustomNavbar(onCartPressed: navigateToCart),
+      bottomNavigationBar: CustomNavbar(onCartPressed: navigateToCart),
       body: Material(
         child: SingleChildScrollView(
           child: Column(
@@ -212,17 +214,33 @@ class _Homepage2State extends State<Homepage2> {
             alignment: Alignment.bottomRight,
             child: InkWell(
               onTap: () {
+                // Existing code...
+
+                // Null checks for each field
+                String id = product['id'] ?? '';
+                String name = product['name'] ?? '';
+                double price = (product['price'] ?? 0).toDouble();
+                String description = product['description'] ?? '';
+                String category = product['category'] ?? '';
+                String imgurl = product['imgurl'] ?? '';
+                int quantity = 1;
+
+                // Map the snapshot data to the Products class
+                Products productObject = Products(
+                  id,
+                  name,
+                  price,
+                  description,
+                  category,
+                  imgurl,
+                  quantity,
+                );
+
                 setState(() {
-    cartItems.add(product);
-    print("hkk");
-    print(cartItems.length);
-  });
-  // Navigator.push(
-  //   context,
-  //   MaterialPageRoute(
-  //     builder: (context) => CartScreen(cartItems: cartItems),
-  //   ),
-  // );
+                  cartItems.add(productObject);
+                });
+                print("hii");
+                print(cartItems.length);
               },
               child: Container(
                 padding: const EdgeInsets.all(12),

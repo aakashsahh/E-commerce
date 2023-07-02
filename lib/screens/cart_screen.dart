@@ -1,54 +1,100 @@
 import 'package:flutter/material.dart';
+import 'package:hamro_furniture/models/products_model.dart';
 
-class CartScreen extends StatelessWidget {
-  final List<dynamic> cartItems;
+class CartScreen extends StatefulWidget {
+  final List<Products> cartItems;
 
   const CartScreen({Key? key, required this.cartItems}) : super(key: key);
 
   @override
+  _CartScreenState createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text(
-          'Cart',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 24,
-            fontWeight: FontWeight.w500,
+        title: const Text('Cart'),
+      ),
+      body: ListView.builder(
+        itemCount: widget.cartItems.length,
+        itemBuilder: (context, index) {
+          Products product = widget.cartItems[index];
+          return ListTile(
+            title: Text(product.name),
+            subtitle: Text('Price: \$${product.price}'),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.remove),
+                  onPressed: () {
+                    setState(() {
+                      if (product.quantity > 1) {
+                        product.quantity--;
+                      } else {
+                        widget.cartItems.removeAt(index);
+                      }
+                    });
+                  },
+                ),
+                Text(product.quantity.toString()),
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: () {
+                    setState(() {
+                      product.quantity++;
+                    });
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Total Price: \$${calculateTotalPrice().toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Implement payment logic here
+                  // You can use a payment gateway or any other payment method
+                  // Once the payment is successful, you can clear the cart items
+                  setState(() {
+                    widget.cartItems.clear();
+                  });
+                },
+                child: const Text('Pay'),
+              ),
+            ],
           ),
         ),
       ),
-      body: cartItems.isEmpty
-          ? const Center(
-              child: Text('Your cart is empty.'),
-            )
-          : ListView.builder(
-              itemCount: cartItems.length,
-              itemBuilder: (context, index) {
-                var product = cartItems[index];
-                return ListTile(
-                  leading: Image.network(
-                    product['imgurl'],
-                    height: 50,
-                    width: 50,
-                  ),
-                  title: Text(product['name']),
-                  subtitle: Text('\$${product['price']}'),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.remove_circle),
-                    onPressed: () {
-                      // Remove item from cart
-                      // Add your logic here
-                    },
-                  ),
-                );
-              },
-            ),
     );
   }
+
+  double calculateTotalPrice() {
+    double totalPrice = 0;
+    for (Products product in widget.cartItems) {
+      totalPrice += product.price * product.quantity;
+    }
+    return totalPrice;
+  }
 }
+
+
 
 
 

@@ -14,11 +14,7 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   List<dynamic> cartItems = [];
   @override
-  void initState() {
-    // TODO: implement initState
-    print(cartItems.length);
-    print("hii");
-  }
+  
 
   @override
   Widget build(BuildContext context) {
