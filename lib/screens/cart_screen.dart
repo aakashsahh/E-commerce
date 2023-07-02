@@ -3,28 +3,100 @@ import 'package:flutter/material.dart';
 class CartScreen extends StatelessWidget {
   final List<dynamic> cartItems;
 
-  const CartScreen({super.key, required this.cartItems});
+  const CartScreen({Key? key, required this.cartItems}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text(
+          'Cart',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
-      body: ListView.builder(
-        itemCount: cartItems.length,
-        itemBuilder: (context, index) {
-          final item = cartItems[index];
-          // Customize the UI to display the cart item
-          return ListTile(
-            title: Text(item['name']),
-            subtitle: Text('Price: \$${item['price']}'),
-          );
-        },
-      ),
+      body: cartItems.isEmpty
+          ? const Center(
+              child: Text('Your cart is empty.'),
+            )
+          : ListView.builder(
+              itemCount: cartItems.length,
+              itemBuilder: (context, index) {
+                var product = cartItems[index];
+                return ListTile(
+                  leading: Image.network(
+                    product['imgurl'],
+                    height: 50,
+                    width: 50,
+                  ),
+                  title: Text(product['name']),
+                  subtitle: Text('\$${product['price']}'),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.remove_circle),
+                    onPressed: () {
+                      // Remove item from cart
+                      // Add your logic here
+                    },
+                  ),
+                );
+              },
+            ),
     );
   }
 }
+
+
+
+
+
+
+
+// import 'package:flutter/material.dart';
+// import 'package:hamro_furniture/models/products_model.dart';
+
+// class CartScreen extends StatelessWidget {
+//   static const routename = '/cartscreen';
+//   List<dynamic> cartItems = [];
+//   CartScreen(this.cartItems);
+
+//   //CartScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: const Text('Cart'),
+//         ),
+//         body: Column(
+//           children: [
+//             ...(cartItems
+//                 .map((e) => ListTile(
+//                       title: Text(e),
+//                     ))
+//                 .toList()),
+//           ],
+//         )
+
+//         // body: ListView.builder(
+//         //   itemCount: cartItems.length,
+//         //   itemBuilder: (context, index) {
+//         //     final item = cartItems[index];
+//         //     // Customize the UI to display the cart item
+//         //     return ListTile(
+//         //       title:Text(""),
+//         //       subtitle: Text('Price: \$${item('price')}'),
+//         //     );
+//         //   },
+//         // ),
+//         );
+//   }
+// }
+
 
 // import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -195,6 +267,7 @@ class CartScreen extends StatelessWidget {
 //     );
 //   }
 // }
+
 
 // class CartItem {
 //   final int id;

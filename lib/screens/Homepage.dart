@@ -1,7 +1,7 @@
+// ignore: file_names
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-import '../widgets/custom_navbar.dart';
 import '../widgets/products_widget.dart';
 import 'category_screen.dart';
 
@@ -21,7 +21,7 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: const CustomNavbar(),
+        //bottomNavigationBar:  CustomNavbar(onCartPressed: navigateToCart ),
         body: Material(
           color: const Color(0xFFF3F6FD),
           child: SingleChildScrollView(

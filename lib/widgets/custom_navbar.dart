@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hamro_furniture/screens/cart_screen.dart';
 import 'package:hamro_furniture/screens/home2.dart';
-import 'package:badges/badges.dart' as badges;
 
-import '../screens/product_screen.dart';
+import '../screens/cart_screen.dart';
 
 class CustomNavbar extends StatelessWidget {
-  const CustomNavbar({super.key});
+  final VoidCallback onCartPressed;
+
+  const CustomNavbar({Key? key, required this.onCartPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class CustomNavbar extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: onCartPressed,
                 child: Container(
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(

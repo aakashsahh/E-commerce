@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       //home: Homepage(),
       home: Homepage2(),
+      
     );
   }
 }

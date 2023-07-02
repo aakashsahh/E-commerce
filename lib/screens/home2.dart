@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:hamro_furniture/screens/cart_screen.dart';
 import 'package:hamro_furniture/widgets/custom_navbar.dart';
 
 import 'product_screen.dart';
@@ -20,7 +22,16 @@ class _Homepage2State extends State<Homepage2> {
     "Doors",
     "Windows",
   ];
+   List<dynamic> cartItems = [];
   int _selectedIndex = -1;
+  void navigateToCart() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CartScreen(cartItems: cartItems),
+      ),
+    );
+  }
   Stream<QuerySnapshot> products = FirebaseFirestore.instance.collection("Products").snapshots();
   @override
   Widget build(BuildContext context) {
@@ -46,7 +57,7 @@ class _Homepage2State extends State<Homepage2> {
           )
         ],
       ),
-      bottomNavigationBar: const CustomNavbar(),
+      bottomNavigationBar:  CustomNavbar(onCartPressed: navigateToCart),
       body: Material(
         child: SingleChildScrollView(
           child: Column(
@@ -142,55 +153,99 @@ class _Homepage2State extends State<Homepage2> {
   }
 
   Widget oneProduct(BuildContext context, product) {
-    return OverflowBox(
-      maxHeight: 320,
-      child: Container(
-        margin: const EdgeInsets.only(top: 40),
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Neumorphic(
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.flat,
-              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-              color: const Color(0xFFF3F6FD),
-              intensity: 1,
-            ),
+    return Stack(
+      children: [
+        OverflowBox(
+          maxHeight: 320,
+          child: Container(
+            margin: const EdgeInsets.only(top: 40),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProductScreen(
-                            product: product,
-                          ),
+              padding: const EdgeInsets.all(8),
+              child: Neumorphic(
+                style: NeumorphicStyle(
+                  shape: NeumorphicShape.flat,
+                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+                  color: const Color(0xFFF3F6FD),
+                  intensity: 1,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductScreen(
+                                product: product,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Image.network(
+                          product['imgurl'],
+                          height: 150,
+                          width: 150,
                         ),
-                      );
-                    },
-                    child: Image.network(
-                      product['imgurl'],
-                      height: 150,
-                      width: 150,
-                    ),
+                      ),
+                      Text(
+                        product['name'],
+                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black54),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "\$${product['price']}",
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
+                      ),
+                    ],
                   ),
-                  Text(
-                    product['name'],
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black54),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    "\$${product['price']}",
-                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
-                  )
-                ],
+                ),
               ),
             ),
           ),
         ),
-      ),
+        //for cart icon
+        Padding(
+          padding: const EdgeInsets.only(right: 0),
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: InkWell(
+              onTap: () {
+                setState(() {
+    cartItems.add(product);
+    print("hkk");
+    print(cartItems.length);
+  });
+  // Navigator.push(
+  //   context,
+  //   MaterialPageRoute(
+  //     builder: (context) => CartScreen(cartItems: cartItems),
+  //   ),
+  // );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                    color: const Color(0xFF35324C),
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 4,
+                        spreadRadius: 4,
+                      )
+                    ]),
+                child: const Icon(
+                  CupertinoIcons.cart_fill_badge_plus,
+                  color: Colors.white,
+                  size: 20,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }

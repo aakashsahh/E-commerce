@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class ProductScreen extends StatefulWidget {
+  
   // ignore: prefer_typing_uninitialized_variables
   final product;
   const ProductScreen({required this.product, Key? key}) : super(key: key);
