@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
+import '../models/products_model.dart ';
+
+
 class ProductScreen extends StatefulWidget {
   
   // ignore: prefer_typing_uninitialized_variables
@@ -12,7 +15,7 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  List<dynamic> cartItems = [];
+  List<Products> cartItems = [];
   @override
   
 
@@ -122,11 +125,7 @@ class _ProductScreenState extends State<ProductScreen> {
               ),
             ]),
         child: GestureDetector(
-          onTap: () {
-            setState(() {
-              cartItems.add(widget.product);
-            });
-          },
+         
           child: const Center(
             child: Padding(
               padding: EdgeInsets.only(top: 20),
