@@ -4,7 +4,6 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hamro_furniture/models/products_model.dart';
 import 'package:hamro_furniture/screens/cart_screen.dart';
 import 'package:hamro_furniture/widgets/custom_navbar.dart';
-
 import 'product_screen.dart';
 
 class Homepage2 extends StatefulWidget {
@@ -49,15 +48,80 @@ class _Homepage2State extends State<Homepage2> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        actions: [
-          IconButton(
-            padding: const EdgeInsets.all(20),
-            onPressed: () {},
-            icon: const Icon(Icons.person),
-            iconSize: 30,
-            color: Colors.black,
-          )
-        ],
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          },
+        ),
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: Color.fromARGB(255, 113, 113, 113),
+          child: ListView(
+            children: const [
+              DrawerHeader(
+                padding: EdgeInsets.zero,
+                child: UserAccountsDrawerHeader(
+                  accountName: Text("Aakash Sah"),
+                  accountEmail: Text("aakashsah181@gmail.com"),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/logo.png"),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 113, 113, 113),
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  "Home",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  "Profile",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  "Logout",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: CustomNavbar(onCartPressed: navigateToCart),
       body: Material(
@@ -214,7 +278,6 @@ class _Homepage2State extends State<Homepage2> {
             alignment: Alignment.bottomRight,
             child: InkWell(
               onTap: () {
-
                 // Null checks for each field
                 String id = product['id'] ?? '';
                 String name = product['name'] ?? '';

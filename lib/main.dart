@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Hamro Furniture',
       debugShowCheckedModeBanner: false,
-      //home: Homepage(),
       home: Homepage2(),
       
     );
