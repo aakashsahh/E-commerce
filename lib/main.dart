@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hamro_furniture/firebase_options.dart';
-import 'package:hamro_furniture/screens/home2.dart';
+import 'package:hamro_furniture/screens/login_screen.dart';
 
 // import 'screens/Homepage.dart';
 
@@ -10,18 +10,19 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+   MyApp({Key? key}) : super(key: key);
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       title: 'Hamro Furniture',
       debugShowCheckedModeBanner: false,
-      home: Homepage2(),
+      navigatorKey: navigatorKey,
+      home: const LoginPage(),
       
     );
   }

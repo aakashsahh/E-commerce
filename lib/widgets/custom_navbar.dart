@@ -2,12 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hamro_furniture/screens/home2.dart';
 
-import '../screens/cart_screen.dart';
 
 class CustomNavbar extends StatelessWidget {
   final VoidCallback onCartPressed;
 
-  const CustomNavbar({Key? key, required this.onCartPressed});
+  const CustomNavbar({super.key, required this.onCartPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +33,11 @@ class CustomNavbar extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.pushAndRemoveUntil<void>(
-                    context,
-                    MaterialPageRoute<void>(builder: (BuildContext context) => const Homepage2()),
-                    ModalRoute.withName('home'),
-                  );
+                  // Navigator.pushAndRemoveUntil<void>(
+                  //   context,
+                  //   MaterialPageRoute<void>(builder: (BuildContext context) => const Homepage2()),
+                  //   ModalRoute.withName('home'),
+                  // );
                 },
                 child: Container(
                   padding: const EdgeInsets.all(15),

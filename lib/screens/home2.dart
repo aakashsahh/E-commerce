@@ -1,19 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hamro_furniture/models/products_model.dart';
 import 'package:hamro_furniture/screens/cart_screen.dart';
 import 'package:hamro_furniture/screens/product_screen.dart';
 import 'package:hamro_furniture/widgets/custom_navbar.dart';
+import 'login_screen.dart';
 
 class Homepage2 extends StatefulWidget {
-  const Homepage2({Key? key}) : super(key: key);
+  const Homepage2({Key? key, required this.user}) : super(key: key);
+
+  final User user;
 
   @override
   State<Homepage2> createState() => _Homepage2State();
 }
 
 class _Homepage2State extends State<Homepage2> {
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+  Future<void> logout() async {
+    await GoogleSignIn().disconnect();
+    FirebaseAuth.instance.signOut();
+  }
+
   List categories = [
     "Chairs",
     "Sofas",
@@ -66,55 +78,43 @@ class _Homepage2State extends State<Homepage2> {
       ),
       drawer: Drawer(
         child: Container(
-          color: Color.fromARGB(255, 113, 113, 113),
+          color: const Color.fromARGB(255, 113, 113, 113),
           child: ListView(
-            children: const [
+            children: [
               DrawerHeader(
                 padding: EdgeInsets.zero,
                 child: UserAccountsDrawerHeader(
-                  accountName: Text("Aakash Sah"),
-                  accountEmail: Text("aakashsah181@gmail.com"),
+                  accountName: Text('Welcome, ${widget.user.displayName}!'),
+                  accountEmail: Text(widget.user.email.toString()),
                   currentAccountPicture: CircleAvatar(
-                    backgroundImage: AssetImage("assets/images/logo.png"),
+                    backgroundImage: NetworkImage(widget.user.photoURL.toString()),
                   ),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 113, 113, 113),
                   ),
                 ),
               ),
               ListTile(
-                leading: Icon(
-                  Icons.home,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  "Home",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.person,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  "Profile",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: Icon(
+                onTap: () {
+                  logout().then((_) {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                    );
+                  }).catchError((error) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('SignOut failed'),
+                      ),
+                    );
+                    // Handle any error that occurs during logout
+                  });
+                },
+                leading: const Icon(
                   Icons.logout,
                   color: Colors.white,
                 ),
-                title: Text(
-                  "Logout",
+                title: const Text(
+                  "SignOut",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
