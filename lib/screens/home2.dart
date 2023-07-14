@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hamro_furniture/models/products_model.dart';
 import 'package:hamro_furniture/screens/cart_screen.dart';
+import 'package:hamro_furniture/screens/product_screen.dart';
 import 'package:hamro_furniture/widgets/custom_navbar.dart';
-import 'product_screen.dart';
 
 class Homepage2 extends StatefulWidget {
   const Homepage2({Key? key}) : super(key: key);
@@ -34,6 +34,8 @@ class _Homepage2State extends State<Homepage2> {
   }
 
   Stream<QuerySnapshot> products = FirebaseFirestore.instance.collection("Products").snapshots();
+  String? searchQuery;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,7 +145,7 @@ class _Homepage2State extends State<Homepage2> {
                         setState(() {
                           _selectedIndex = index;
                         });
-                        filterProducsts(category);
+                        filterProducts(category);
                       },
                       child: Container(
                         margin: const EdgeInsets.all(10),
@@ -175,6 +177,20 @@ class _Homepage2State extends State<Homepage2> {
                   },
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  onChanged: (value) {
+                    setState(() {
+                      searchQuery = value;
+                    });
+                  },
+                  decoration: const InputDecoration(
+                    labelText: 'Search',
+                    suffixIcon: Icon(Icons.search),
+                  ),
+                ),
+              ),
               StreamBuilder<QuerySnapshot>(
                 stream: products,
                 builder: (
@@ -184,6 +200,11 @@ class _Homepage2State extends State<Homepage2> {
                   if (snapshot.hasError) {
                     return const Text('Error');
                   } else if (snapshot.hasData) {
+                    List<QueryDocumentSnapshot> filteredDocs = searchQuery != null
+                        ? snapshot.data!.docs
+                            .where((doc) => doc['name'].toString().toLowerCase().contains(searchQuery!.toLowerCase()))
+                            .toList()
+                        : snapshot.data!.docs;
                     return GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -194,9 +215,9 @@ class _Homepage2State extends State<Homepage2> {
                         mainAxisSpacing: 30,
                         crossAxisSpacing: 5,
                       ),
-                      itemCount: snapshot.data!.docs.length,
+                      itemCount: filteredDocs.length,
                       itemBuilder: (context, index) {
-                        var product = snapshot.data!.docs[index].data();
+                        var product = filteredDocs[index].data();
                         return oneProduct(context, product);
                       },
                     );
@@ -212,7 +233,7 @@ class _Homepage2State extends State<Homepage2> {
     );
   }
 
-  void filterProducsts(String category) {
+  void filterProducts(String category) {
     setState(() {
       products = FirebaseFirestore.instance.collection("Products").where("category", isEqualTo: category).snapshots();
     });
