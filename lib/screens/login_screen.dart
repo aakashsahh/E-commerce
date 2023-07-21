@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +30,6 @@ class _LoginPageState extends State<LoginPage> {
       final UserCredential userCredential = await _auth.signInWithCredential(credential);
       return userCredential;
     } catch (e) {
-      print(e.toString());
       return null;
     }
   }
@@ -88,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                   SignInButton(
                     Buttons.Google,
                     padding: const EdgeInsets.all(10),
-                    shape: StadiumBorder(),
+                    shape: const StadiumBorder(),
                     onPressed: () async {
                       final UserCredential? userCredential = await signInWithGoogle(context);
                       if (userCredential != null) {

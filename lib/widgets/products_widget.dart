@@ -1,13 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:hamro_furniture/models/products_model.dart';
 
-import '../screens/product_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class ProductsWidget extends StatefulWidget {
+  const ProductsWidget({super.key});
+
   @override
   State<ProductsWidget> createState() => _ProductsWidgetState();
 }
@@ -42,11 +39,6 @@ class _ProductsWidgetState extends State<ProductsWidget> {
                           children: [
                             InkWell(
                                 onTap: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //       builder: (context) => ProductScreen(),
-                                  //     ));
                                 },
                                 child: Image.asset(
                                   "assets/images/Product ${index + 1}.png",

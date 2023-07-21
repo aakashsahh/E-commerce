@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hamro_furniture/firebase_options.dart';
 import 'package:hamro_furniture/screens/login_screen.dart';
 
-// import 'screens/Homepage.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
