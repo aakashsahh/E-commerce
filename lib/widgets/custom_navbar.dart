@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hamro_furniture/screens/home2.dart';
 
 
 class CustomNavbar extends StatelessWidget {

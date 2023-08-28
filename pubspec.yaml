@@ -40,11 +40,11 @@ dependencies:
   firebase_core: ^2.11.0
   firebase_storage: ^11.1.2
   flutter_neumorphic: ^3.2.0
-  intl: ^0.17.0
+  intl: ^0.18.1
   badges: ^3.1.1
   flutter_stripe: ^9.2.2
   firestore_search: ^0.2.0
-  google_sign_in: ^5.2.1
+  google_sign_in: ^6.1.4
   flutter_signin_button: ^2.0.0
 
 

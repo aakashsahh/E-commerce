@@ -146,9 +146,6 @@ class _ProductScreenState extends State<ProductScreen> {
           setState(() {
             cartItems.add(widget.product);
           });
-          print(cartItems.length);
-          print("hello");
-          print(cartItems.toString());
         },
         child: Container(
           padding: const EdgeInsets.all(20),
