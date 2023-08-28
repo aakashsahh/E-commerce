@@ -35,11 +35,14 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
-  cloud_firestore: ^4.6.0
-  firebase_auth: ^4.5.0
-  firebase_core: ^2.11.0
-  firebase_storage: ^11.1.2
-  flutter_neumorphic: ^3.2.0
+  cloud_firestore: ^4.9.0
+  firebase_auth: ^4.8.0
+  firebase_core: ^2.15.1
+  firebase_storage: ^11.2.6
+  flutter_neumorphic:
+    git:
+      url: https://github.com/den0206/Flutter-Neumorphic.git
+      ref: feature/remoce_accentcolor
   intl: ^0.18.1
   badges: ^3.1.1
   flutter_stripe: ^9.2.2

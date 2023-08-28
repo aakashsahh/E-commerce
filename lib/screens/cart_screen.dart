@@ -2,7 +2,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:hamro_furniture/models/products_model.dart';
 
 class CartScreen extends StatefulWidget {
-  final List<Products> cartItems;
+  final List<Product> cartItems;
 
   const CartScreen({Key? key, required this.cartItems}) : super(key: key);
 
@@ -41,7 +41,7 @@ class _CartScreenState extends State<CartScreen> {
       body: ListView.builder(
         itemCount: widget.cartItems.length,
         itemBuilder: (context, index) {
-          Products product = widget.cartItems[index];
+          Product product = widget.cartItems[index];
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             child: Neumorphic(
@@ -125,13 +125,13 @@ class _CartScreenState extends State<CartScreen> {
 
   double calculateTotalPrice() {
     double totalPrice = 0;
-    for (Products product in widget.cartItems) {
+    for (Product product in widget.cartItems) {
       totalPrice += product.price * product.quantity;
     }
     return totalPrice;
   }
 
-  void removeFromCart(Products product) {
+  void removeFromCart(Product product) {
     setState(() {
       widget.cartItems.remove(product);
     });

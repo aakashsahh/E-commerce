@@ -34,13 +34,13 @@ class _Homepage2State extends State<Homepage2> {
     "Doors",
     "Windows",
   ];
-  List<Products> cartItems = [];
+  List<Product> cartItems = [];
   int _selectedIndex = -1;
   void navigateToCart() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => CartScreen(cartItems: cartItems.cast<Products>()),
+        builder: (context) => CartScreen(cartItems: cartItems.cast<Product>()),
       ),
     );
   }
@@ -309,7 +309,7 @@ class _Homepage2State extends State<Homepage2> {
                 int quantity = 1;
 
                 // Mapping the snapshot data to the Products class
-                Products productObject = Products(
+                Product productObject = Product(
                   id,
                   name,
                   price,

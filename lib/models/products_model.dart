@@ -1,4 +1,4 @@
-class Products {
+class Product {
   String id;
   String name;
   double price;
@@ -7,5 +7,5 @@ class Products {
   String imgurl;
   int quantity;
 
-  Products(this.id, this.name, this.price, this.description, this.category, this.imgurl, this.quantity);
+  Product(this.id, this.name, this.price, this.description, this.category, this.imgurl, this.quantity);
 }

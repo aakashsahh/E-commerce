@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-import '../models/products_model.dart ';
+import '../models/products_model.dart';
 
 
 class ProductScreen extends StatefulWidget {
@@ -15,7 +15,7 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  List<Products> cartItems = [];
+  List<Product> cartItems = [];
   @override
   
 
